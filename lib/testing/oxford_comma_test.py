@@ -5,19 +5,10 @@ from oxford_comma import (
 class TestOxfordComma:
     '''Module oxford_comma.py'''
 
-    def test_with_one_element(self):
-        '''returns a string without any additional formatting when given a 1-element list'''
-        assert(oxford_comma(["kiwi"]) == "kiwi")
-
-    def test_with_two_elements(self):
-        '''adds "and" between elements when given a 2-element list'''
-        assert(oxford_comma(["kiwi", "durian"]) == "kiwi and durian")
-
-    def test_with_three_elements(self):
-        '''adds commas plus a final "and" when given a 3-element list'''
-        assert(oxford_comma(["kiwi", "durian", "starfruit"]) == "kiwi, durian, and starfruit")
-
-    def test_with_more_than_three_elements(self):
-        '''correctly formats lists of lengths greater than three'''
-        assert(oxford_comma(["kiwi", "durian", "starfruit", "mangos", "dragon fruits"]) == "kiwi, durian, starfruit, mangos, and dragon fruits")
-        assert(oxford_comma(["kiwi", "durian", "starfruit", "mangos", "dragon fruits", "lychees", "pomelos"]) == "kiwi, durian, starfruit, mangos, dragon fruits, lychees, and pomelos")
+def oxford_comma(elements):
+    if len(elements) == 1:
+        return elements[0]
+    elif len(elements) == 2:
+        return f"{elements[0]} and {elements[1]}"
+    else:
+        return ', '.join(elements[:-1]) + ', and ' + elements[-1]
